@@ -1,0 +1,18 @@
+train_data:
+  target: src.data.VideoDatasetLMDB.VideoDatasetLMDB
+  params:
+    size: 256
+    clip_nframe: 1
+    shuffle: True
+    split: ['train', 'test']
+    lmdb_path: datasets/sky_timelapse/lmdb/sky_traintest.lmdb
+
+valid_data:
+  target: src.data.VideoDataset.VideoDataset
+  params:
+    size: 256
+    extract_fps: 25 # the setting fps when merging frames
+    clip_nframe: 1
+    shuffle: False
+    fix_prompt: placeholder
+    root: datasets/sky_timelapse/sky_test_vid

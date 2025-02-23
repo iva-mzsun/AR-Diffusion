@@ -1,0 +1,46 @@
+model:
+  target: src.diff_model.df_latent.DiffusionForcingVideo_wVAE
+  params:
+      in_channels: 3
+      frame_resolution: 256
+      num_frames: 16
+      n_token_per_frame: 32
+      n_channel_per_token: 12
+      
+      # diffusion-related
+      uncertainty_scale: 1
+      chunk_size: 1
+      scheduling_matrix: autoregressive
+      noise_level: random_all
+
+      data_mean: 0.5 # vq latent is normalized
+      data_std: 0.5 # thus should have 0.5 mean and std
+
+      vae_cfg_file: configs/skytimelapse/model/basel1_large.yaml
+      vae_pth_path: experiments/2024-07-24T21-45-35_basel1_large_skyimg/ckpt_dir/checkpoint-70000/model.safetensors
+
+      diffusion_cfg:
+        timesteps: 1000
+        clip_noise: 20.0
+        # training
+        beta_schedule: cosine
+        schedule_fn_kwargs: {}
+        objective: pred_v
+        use_fused_snr: True
+        snr_clip: 5.0
+        cum_snr_decay: 0.96
+        # sampling
+        sampling_timesteps: 100
+        ddim_sampling_eta: 0.0
+        stabilization_level: 10
+        # architecture
+        in_channels: ${model.params.n_channel_per_token}
+        num_frames: ${model.params.num_frames}
+        n_token_per_frame: ${model.params.n_token_per_frame}
+        depth: 28
+        num_heads: 16
+        hidden_size: 1152
+        use_causal_attn: False
+        use_rotary_emb: True
+        use_cond_emb: False
+        learn_sigma: False

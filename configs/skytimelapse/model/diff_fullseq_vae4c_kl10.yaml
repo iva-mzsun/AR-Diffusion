@@ -1,0 +1,39 @@
+model:
+  target: src.ar_diff.ar_diff.AR_LDM
+  params:
+      scale_factor: 0.5
+      noise_level: full_sequence
+
+      # params for model
+      model_cfg:
+        target: src.ar_diff.modules.dit_model.DiT_crossattn
+        params:
+          num_frames: 16
+          in_channels: 4
+          n_token_per_frame: 32
+          hidden_size: 1152
+          depth: 28
+          num_heads: 16
+          mlp_ratio: 4
+          learn_sigma: False
+
+      diffusion_cfg:
+        target: src.ar_diff.modules.diffusion.LatentDiffusion
+        params:
+          linear_start: 0.00085
+          linear_end: 0.0120
+          timesteps: 1000
+          learn_logvar: False
+          clip_denoised: True
+
+      # params for inputs
+      num_frames: 16
+      in_channels: 3
+      frame_resolution: 256
+      n_token_per_frame: 32
+      n_channel_per_token: 4
+      
+      # params for vae
+      vae_cfg_file: configs/skytimelapse/model/vae_4ch_32len_large.yaml
+      vae_pth_path: experiments/2024-09-20T17-45-47_vae_4ch_32len_large_skyvid_img_kl10/ckpt_dir/checkpoint-40000/model.safetensors
+

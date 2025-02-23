@@ -1,0 +1,14 @@
+model:
+  target: src.vae_model.titok.TiTok
+  params:
+    image_size: 256
+    codebook_size: 4096
+    token_size: 12
+    use_l2_norm: true
+    commitment_cost: 0.25
+    vit_enc_model_size: base
+    vit_dec_model_size: base
+    vit_enc_patch_size: 16
+    vit_dec_patch_size: 16
+    num_latent_tokens: 64
+    use_l1_loss: True

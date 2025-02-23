@@ -1,0 +1,22 @@
+train_data:
+  target: src.data.VideoDataset_Flatten.VideoDataset
+  params:
+    size: 256
+    extract_fps: 25 # the setting fps when merging frames
+    clip_nframe: 16
+    skip_nframe: 16
+    shuffle: True
+    fix_prompt: placeholder
+    root: datasets/Faceforensic++/videos_256x
+
+valid_data:
+  target: src.data.VideoDataset_Flatten.VideoDataset
+  params:
+    size: 256
+    extract_fps: 25 # the setting fps when merging frames
+    clip_nframe: 16
+    skip_nframe: 16
+    shuffle: True
+    fix_prompt: placeholder
+    max_data_num: 2048
+    root: datasets/Faceforensic++/videos_256x

@@ -1,0 +1,15 @@
+train_data:
+  target: src.data.LatentDataset.LatentDataset
+  params:
+    shuffle: True
+    fix_prompt: placeholder
+    root: datasets/sky_timelapse/train_latent
+
+valid_data:
+  target: src.data.LatentDataset.LatentDataset
+  params:
+    shuffle: False
+    fix_prompt: placeholder
+    # max_data_num: 2048
+    # root: datasets/sky_timelapse/valid_latent
+    root: datasets/sky_timelapse/train_latent

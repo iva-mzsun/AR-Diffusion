@@ -1,0 +1,5 @@
+model:
+  target: src.model.discriminator.Discriminator
+  params:
+    num_channels: 3
+    hidden_size: 64

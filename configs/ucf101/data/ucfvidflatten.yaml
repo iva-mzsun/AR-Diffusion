@@ -1,0 +1,22 @@
+train_data:
+  target: src.data.UCF101Dataset_Flatten.VideoDataset
+  params:
+    size: 256
+    extract_fps: 25 # the setting fps when merging frames
+    clip_nframe: 16
+    skip_nframe: 128
+    shuffle: True
+    root: datasets/ucf101/videos
+    ids_file: datasets/ucf101/annotations/train03_ids.json
+
+valid_data:
+  target: src.data.UCF101Dataset_Flatten.VideoDataset
+  params:
+    size: 256
+    extract_fps: 25 # the setting fps when merging frames
+    clip_nframe: 16
+    skip_nframe: 128
+    shuffle: True
+    max_data_num: 2048
+    root: datasets/ucf101/videos
+    ids_file: datasets/ucf101/annotations/train03_ids.json

@@ -1,0 +1,12 @@
+train_data:
+  target: src.data.UCF101LatentDataset.LatentDataset
+  params:
+    shuffle: True
+    root: datasets/ucf101/train_latent
+
+valid_data:
+  target: src.data.UCF101LatentDataset.LatentDataset
+  params:
+    shuffle: False
+    max_data_num: 2048
+    root: datasets/ucf101/train_latent

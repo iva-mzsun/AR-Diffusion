@@ -1,0 +1,47 @@
+model:
+  target: src.diff_model.df_video.DiffusionForcingVideo
+  params:
+    cfg:
+      x_shape: [3, 32, 32] # corresponding to dataset frame size
+      frame_stack: 1
+      n_frames: 16
+      frame_skip: 1
+      context_frames: 0
+      data_mean: 0.5
+      data_std: 0.5
+      external_cond_dim: 0
+      # training hyperparameters
+      weight_decay: 1e-3
+      warmup_steps: 5000
+      optimizer_beta: [0.9, 0.99]
+      # diffusion-related
+      uncertainty_scale: 1
+      chunk_size: 1
+      scheduling_matrix: autoregressive
+      noise_level: random_all
+
+      diffusion:
+        timesteps: 1000
+        clip_noise: 20.0
+        # training
+        beta_schedule: cosine
+        schedule_fn_kwargs: {}
+        objective: pred_v
+        use_fused_snr: True
+        snr_clip: 5.0
+        cum_snr_decay: 0.96
+        # sampling
+        sampling_timesteps: 100
+        ddim_sampling_eta: 0.0
+        stabilization_level: 10
+        # architecture
+        network_size: 256
+        attn_heads: 4
+        attn_dim_head: 32
+        dim_mults: [1, 2, 4, 8]
+        resolution: 256
+        attn_resolutions: [8, 16, 32, 64]
+        use_causal_mask: True
+        use_init_temporal_attn: True
+        use_linear_attn: True
+        time_emb_type: rotary

@@ -1,0 +1,13 @@
+model:
+  target: src.vae_model.titok_kl.TiTok_KL
+  params:
+    image_size: 256
+    codebook_size: 4096
+    token_size: 4
+    use_l2_norm: true
+    vit_enc_model_size: large
+    vit_dec_model_size: large
+    vit_enc_patch_size: 16
+    vit_dec_patch_size: 16
+    num_latent_tokens: 32
+    use_l1_loss: True

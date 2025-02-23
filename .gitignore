@@ -1,0 +1,15 @@
+wandb
+datasets
+experiments
+baselines
+baselines/*
+activate_env.sh
+**/__pycache__
+*.bin
+**/eval_fvd
+**/*.ckpt
+notebook/*
+upload_exps/
+key_exps/
+shell_scripts/*
+shell_scripts/**/*

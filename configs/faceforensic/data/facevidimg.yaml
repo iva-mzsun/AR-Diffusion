@@ -1,0 +1,22 @@
+train_data:
+  target: src.data.VideoDataset.VideoDataset
+  params:
+    size: 256
+    extract_fps: 25 # the setting fps following stylegan-v
+    clip_nframe: 1
+    shuffle: True
+    fix_prompt: placeholder
+    root: datasets/Faceforensic++/videos_256x_clip
+    # ids_file: datasets/Faceforensic++/trainids.json
+
+valid_data:
+  target: src.data.VideoDataset.VideoDataset
+  params:
+    size: 256
+    extract_fps: 25 # the setting fps following stylegan-v
+    clip_nframe: 1
+    shuffle: True
+    fix_prompt: placeholder
+    max_data_num: 2048
+    root: datasets/Faceforensic++/videos_256x_clip
+    # ids_file: datasets/Faceforensic++/testids.json

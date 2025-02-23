@@ -1,0 +1,42 @@
+model:
+  target: src.ardiff.base.BaseModel
+  params:
+      scale_factor: 0.5
+      noise_level: diff_forcing
+      norm_preprocess: True
+
+      # params for model
+      model_cfg:
+        target: src.ardiff.modules.dit_model.DiT_crossattn
+        params:
+          num_frames: 16
+          in_channels: 4
+          n_token_per_frame: 32
+          hidden_size: 1152
+          depth: 28
+          num_heads: 16
+          mlp_ratio: 4
+          learn_sigma: False
+          merge_mode: share_norm
+
+      diffusion_cfg:
+        target: src.ardiff.modules.diffusion.LatentDiffusion
+        params:
+          parameterization: v
+          linear_start: 0.00085
+          linear_end: 0.0120
+          timesteps: 1000
+          learn_logvar: False
+          clip_denoised: True
+
+      # params for inputs
+      num_frames: 16
+      in_channels: 3
+      frame_resolution: 256
+      n_token_per_frame: 32
+      n_channel_per_token: 4
+      
+      # params for vae
+      vae_cfg_file: configs/faceforensic/vae/vae_4ch_32len_large.yaml
+      vae_pth_path: experiments/2024-10-23T14-11-01_vae_4ch_32len_large_facevidimg/ckpt_dir/checkpoint-500000/model.safetensors
+

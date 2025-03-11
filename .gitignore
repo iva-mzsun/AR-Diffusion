@@ -11,5 +11,3 @@ activate_env.sh
 notebook/*
 upload_exps/
 key_exps/
-shell_scripts/*
-shell_scripts/**/*

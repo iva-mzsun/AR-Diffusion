@@ -63,5 +63,8 @@ TODO
 ```
 @article{ardiff,
   title={AR-Diffusion: Asynchronous Video Generation with Auto-Regressive Diffusion},
+  author={Sun, Mingzhen and Wang, Weining and Li, Gen and Liu, Jiawei and Sun, Jiahui and Feng, Wanquan and Lao, shanshan and Zhou, SiYu and He, Qian and Liu, Jing},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  year={2025}
 }
 ```
